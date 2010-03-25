@@ -61,6 +61,21 @@
     [data appendData:moreData];
 }
 
+/*
+- (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+
+	NSLog(@"challenged %@",[challenge proposedCredential]);
+	
+	if ([challenge previousFailureCount] == 0) {
+		NSURLCredential *newCredential = [NSURLCredential credentialWithUser:@"USERNAME" password:@"PASSWORD" persistence:NSURLCredentialPersistenceNone];
+		
+		[[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+	} else {
+		[[challenge sender] cancelAuthenticationChallenge:challenge];
+		NSLog(@"Invalid Username & Password");
+	}
+}*/
+
 - (void) connectionDidFinishLoading:(NSURLConnection *)conn
 {
     [delegate updater:self didReceiveData:data];
